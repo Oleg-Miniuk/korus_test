@@ -1,17 +1,38 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const list = []
+import Note from './Note';
+
 class App extends Component {
   render() {
+    const { filter, notes } = this.props;
+
     return (
       <div>
         <div>
-          <input></input>
+          <input value={filter} />
         </div>
-        hello
+        {notes.map(note => (
+          <Note {...note} />
+        ))}
       </div>
     );
   }
 }
 
-export default App;
+App.propTypes = {
+  filter: PropTypes.string
+};
+
+App.defaultProps = {
+  filter: ''
+};
+
+export default connect(store => {
+  const { filter, notes } = store;
+  return {
+    filter,
+    notes
+  };
+})(App);
