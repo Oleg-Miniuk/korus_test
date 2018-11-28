@@ -7,6 +7,13 @@ const changeNoteTitle = ({ id, title }) => dispatch({
     title
   });
 
+const changeNoteDescription = ({ id, description }) => dispatch({
+    type: constants.CHANGE_NOTE_DESCRIPTION,
+    id,
+    description
+  });
+
 export default {
-  changeNoteTitle
+  changeNoteTitle,
+  changeNoteDescription
 };

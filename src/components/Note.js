@@ -20,11 +20,19 @@ const styles = () => ({
   }
 });
 class Note extends Component {
-  changeNoteTitle = e => {
+  changeNoteTitleHandler = e => {
     const { id } = this.props;
     notesActions.changeNoteTitle({
       id,
       title: e.target.value
+    });
+  };
+
+  changeNoteDescriptionHandler = e => {
+    const { id } = this.props;
+    notesActions.changeNoteDescription({
+      id,
+      description: e.target.value
     });
   };
 
@@ -38,7 +46,7 @@ class Note extends Component {
             label="Title"
             placeholder="Enter title"
             margin="normal"
-            onBlur={this.changeNoteTitle}
+            onBlur={this.changeNoteTitleHandler}
           />
           <TextField
             id="noteDescription"
@@ -47,6 +55,7 @@ class Note extends Component {
             multiline
             margin="normal"
             rows="4"
+            onBlur={this.changeNoteDescriptionHandler}
           />
           <Button color="secondary" className={classes.deleteBtn}>
             Delete note

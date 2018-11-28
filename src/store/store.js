@@ -9,12 +9,12 @@ const initialState = {
     {
       id: 1,
       title: 'title 1',
-      value: 'note description 1'
+      description: 'note description 1'
     },
     {
       id: 2,
       title: 'title 2',
-      value: 'note description 2'
+      description: 'note description 2'
     }
   ]
 };
