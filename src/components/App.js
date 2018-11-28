@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'recompose';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import Note from './Note';
 
+const styles = () => ({
+  addBtnWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+});
 class App extends Component {
   render() {
-    const { filter, notes } = this.props;
+    const { filter, notes, classes } = this.props;
 
     return (
       <div>
@@ -24,6 +34,9 @@ class App extends Component {
             />
           </Toolbar>
         </AppBar>
+        <div className={classes.addBtnWrapper}>
+          <Button color="primary">Add note</Button>
+        </div>
         {notes.map(note => (
           <Note {...note} />
         ))}
@@ -40,10 +53,15 @@ App.defaultProps = {
   filter: ''
 };
 
-export default connect(store => {
-  const { filter, notes } = store;
-  return {
-    filter,
-    notes
-  };
-})(App);
+const enhance = compose(
+  connect(store => {
+    const { filter, notes } = store;
+    return {
+      filter,
+      notes
+    };
+  }),
+  withStyles(styles)
+);
+
+export default enhance(App);

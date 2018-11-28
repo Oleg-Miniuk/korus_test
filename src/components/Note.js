@@ -4,6 +4,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 const styles = () => ({
   list: {
@@ -12,6 +13,9 @@ const styles = () => ({
   listItem: {
     flexDirection: 'column',
     alignItems: 'flex-start'
+  },
+  deleteBtn: {
+    alignSelf: 'flex-end'
   }
 });
 class Note extends Component {
@@ -36,6 +40,9 @@ class Note extends Component {
             margin="normal"
             rows="4"
           />
+          <Button color="secondary" className={classes.deleteBtn}>
+            Delete note
+          </Button>
         </ListItem>
       </List>
     );
