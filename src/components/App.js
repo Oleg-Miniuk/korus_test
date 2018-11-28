@@ -8,6 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Note from './Note';
+import filterActions from '../actions/filter';
 
 const styles = () => ({
   addBtnWrapper: {
@@ -31,6 +32,7 @@ class App extends Component {
               margin="normal"
               value={filter}
               fullWidth
+              onChange={filterActions.changeFilter}
             />
           </Toolbar>
         </AppBar>
