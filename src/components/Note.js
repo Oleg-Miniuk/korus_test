@@ -5,6 +5,7 @@ import ListItem from '@material-ui/core/ListItem';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import notesActions from '../actions/notes';
 
 const styles = () => ({
   list: {
@@ -19,7 +20,13 @@ const styles = () => ({
   }
 });
 class Note extends Component {
-  state = {};
+  changeNoteTitle = e => {
+    const { id } = this.props;
+    notesActions.changeNoteTitle({
+      id,
+      title: e.target.value
+    });
+  };
 
   render() {
     const { classes } = this.props;
@@ -31,6 +38,7 @@ class Note extends Component {
             label="Title"
             placeholder="Enter title"
             margin="normal"
+            onBlur={this.changeNoteTitle}
           />
           <TextField
             id="noteDescription"
@@ -50,7 +58,8 @@ class Note extends Component {
 }
 
 Note.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(Note);

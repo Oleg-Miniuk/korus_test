@@ -1,7 +1,8 @@
 import { dispatch } from '../store/store';
+import constants from '../constants/constants';
 
 const changeFilter = e => dispatch({
-    type: 'CHANGE_FILTER',
+    type: constants.CHANGE_FILTER,
     value: e.target.value
   });
 
