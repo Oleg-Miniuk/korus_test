@@ -22,6 +22,10 @@ class App extends Component {
   render() {
     const { filter, notes, classes } = this.props;
 
+    const filteredNotes = filter
+      ? notes.filter(note => note.title.indexOf(filter) !== -1)
+      : notes;
+
     return (
       <div>
         <AppBar position="static" color="default">
@@ -42,7 +46,7 @@ class App extends Component {
             Add note
           </Button>
         </div>
-        {notes.map(note => (
+        {filteredNotes.map(note => (
           <Note key={note.id} {...note} />
         ))}
       </div>
