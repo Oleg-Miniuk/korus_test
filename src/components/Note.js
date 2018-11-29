@@ -46,7 +46,7 @@ class Note extends Component {
             label="Title"
             placeholder="Enter note's title"
             margin="normal"
-            onBlur={this.changeNoteTitleHandler}
+            onChange={this.changeNoteTitleHandler}
             value={title}
           />
           <TextField
@@ -56,7 +56,7 @@ class Note extends Component {
             multiline
             margin="normal"
             rows="4"
-            onBlur={this.changeNoteDescriptionHandler}
+            onChange={this.changeNoteDescriptionHandler}
             value={description}
           />
           <Button color="secondary" className={classes.deleteBtn}>
