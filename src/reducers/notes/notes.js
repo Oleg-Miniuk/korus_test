@@ -36,6 +36,9 @@ const notes = (state = [], action) => {
       ...state
     ];
   }
+  if (action.type === constants.DELETE_NOTE) {
+    return state.filter(note => note.id !== action.id);
+  }
   return state;
 };
 

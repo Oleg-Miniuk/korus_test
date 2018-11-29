@@ -17,8 +17,14 @@ const addNote = () => dispatch({
     type: constants.ADD_NOTE
   });
 
+const deleteNote = ({ id }) => dispatch({
+    type: constants.DELETE_NOTE,
+    id
+  });
+
 export default {
   changeNoteTitle,
   changeNoteDescription,
-  addNote
+  addNote,
+  deleteNote
 };

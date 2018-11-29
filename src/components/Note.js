@@ -36,6 +36,11 @@ class Note extends Component {
     });
   };
 
+  deleteNoteHandler = () => {
+    const { id } = this.props;
+    notesActions.deleteNote({ id });
+  };
+
   render() {
     const { classes, title, description, id } = this.props;
     return (
@@ -59,7 +64,11 @@ class Note extends Component {
             onChange={this.changeNoteDescriptionHandler}
             value={description}
           />
-          <Button color="secondary" className={classes.deleteBtn}>
+          <Button
+            onClick={this.deleteNoteHandler}
+            color="secondary"
+            className={classes.deleteBtn}
+          >
             Delete note
           </Button>
         </ListItem>
