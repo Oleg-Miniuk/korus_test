@@ -37,25 +37,27 @@ class Note extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, title, description, id } = this.props;
     return (
       <List className={classes.list}>
         <ListItem className={classes.listItem}>
           <TextField
-            id="noteDescription"
+            id={`noteTitle-${id}`}
             label="Title"
-            placeholder="Enter title"
+            placeholder="Enter note's title"
             margin="normal"
             onBlur={this.changeNoteTitleHandler}
+            value={title}
           />
           <TextField
-            id="noteDescription"
+            id={`noteDescription-${id}`}
             label="Note"
-            placeholder="Enter your note"
+            placeholder="Enter note's description"
             multiline
             margin="normal"
             rows="4"
             onBlur={this.changeNoteDescriptionHandler}
+            value={description}
           />
           <Button color="secondary" className={classes.deleteBtn}>
             Delete note
@@ -68,7 +70,14 @@ class Note extends Component {
 
 Note.propTypes = {
   classes: PropTypes.object.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  description: PropTypes.string
+};
+
+Note.defaultProps = {
+  title: '',
+  description: ''
 };
 
 export default withStyles(styles)(Note);
