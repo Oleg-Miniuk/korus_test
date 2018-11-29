@@ -1,4 +1,5 @@
 import { createStore, compose } from 'redux';
+import uniqid from 'uniqid';
 import rootReducer from '../reducers';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -7,12 +8,12 @@ const initialState = {
   filter: '',
   notes: [
     {
-      id: 1,
+      id: uniqid(),
       title: 'title 1',
       description: 'note description 1'
     },
     {
-      id: 2,
+      id: uniqid(),
       title: 'title 2',
       description: 'note description 2'
     }

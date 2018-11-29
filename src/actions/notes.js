@@ -13,7 +13,12 @@ const changeNoteDescription = ({ id, description }) => dispatch({
     description
   });
 
+const addNote = () => dispatch({
+    type: constants.ADD_NOTE
+  });
+
 export default {
   changeNoteTitle,
-  changeNoteDescription
+  changeNoteDescription,
+  addNote
 };

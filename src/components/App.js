@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Note from './Note';
 import filterActions from '../actions/filter';
+import notesActions from '../actions/notes';
 
 const styles = () => ({
   addBtnWrapper: {
@@ -37,10 +38,12 @@ class App extends Component {
           </Toolbar>
         </AppBar>
         <div className={classes.addBtnWrapper}>
-          <Button color="primary">Add note</Button>
+          <Button onClick={notesActions.addNote} color="primary">
+            Add note
+          </Button>
         </div>
         {notes.map(note => (
-          <Note {...note} />
+          <Note key={note.id} {...note} />
         ))}
       </div>
     );
