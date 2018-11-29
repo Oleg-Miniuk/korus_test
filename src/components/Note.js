@@ -56,7 +56,7 @@ class Note extends Component {
           />
           <TextField
             id={`noteDescription-${id}`}
-            label="Note"
+            label="Description"
             placeholder="Enter note's description"
             multiline
             margin="normal"
