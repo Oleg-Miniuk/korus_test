@@ -1,4 +1,4 @@
-import {} from '../store/store';
+import uniqid from 'uniqid';
 import constants from '../constants/constants';
 import actionUtils from '../utils/actionsUtils';
 
@@ -15,7 +15,8 @@ const changeNoteDescription = ({ id, description }) => ({
 });
 
 const addNote = () => ({
-  type: constants.ADD_NOTE
+  type: constants.ADD_NOTE,
+  id: uniqid()
 });
 
 const deleteNote = ({ id }) => ({

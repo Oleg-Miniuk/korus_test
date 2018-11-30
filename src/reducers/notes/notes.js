@@ -1,4 +1,3 @@
-import uniqid from 'uniqid';
 import constants from '../../constants/constants';
 
 const notes = (state = [], action) => {
@@ -29,7 +28,7 @@ const notes = (state = [], action) => {
   if (action.type === constants.ADD_NOTE) {
     return [
       {
-        id: uniqid(),
+        id: action.id,
         title: '',
         description: ''
       },
