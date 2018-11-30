@@ -10,6 +10,8 @@ import Button from '@material-ui/core/Button';
 import Note from './Note';
 import filterActions from '../actions/filter';
 import notesActions from '../actions/notes';
+import { channel } from '../utils/channelUtils';
+import { appInstanceId } from '../utils/appUtils';
 
 const styles = () => ({
   addBtnWrapper: {
@@ -19,6 +21,17 @@ const styles = () => ({
   }
 });
 class App extends Component {
+  componentDidMount() {
+    channel.onmessage = e => {
+      const message = e.data;
+      const { receivedAppInstanceId, action } = message;
+      // if it is not an app instance that posted message
+      if (receivedAppInstanceId !== appInstanceId) {
+        this.props.dispatch(action);
+      }
+    };
+  }
+
   render() {
     const { filter, notes, classes } = this.props;
 
@@ -55,7 +68,8 @@ class App extends Component {
 }
 
 App.propTypes = {
-  filter: PropTypes.string
+  filter: PropTypes.string,
+  dispatch: PropTypes.func.isRequired
 };
 
 App.defaultProps = {
@@ -63,8 +77,8 @@ App.defaultProps = {
 };
 
 const enhance = compose(
-  connect(store => {
-    const { filter, notes } = store;
+  connect(state => {
+    const { filter, notes } = state;
     return {
       filter,
       notes
