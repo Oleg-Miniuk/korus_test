@@ -1,30 +1,35 @@
-import { dispatch } from '../store/store';
+import {} from '../store/store';
 import constants from '../constants/constants';
+import actionUtils from '../utils/actionsUtils';
 
-const changeNoteTitle = ({ id, title }) => dispatch({
-    type: constants.CHANGE_NOTE_TITLE,
-    id,
-    title
-  });
+const changeNoteTitle = ({ id, title }) => ({
+  type: constants.CHANGE_NOTE_TITLE,
+  id,
+  title
+});
 
-const changeNoteDescription = ({ id, description }) => dispatch({
-    type: constants.CHANGE_NOTE_DESCRIPTION,
-    id,
-    description
-  });
+const changeNoteDescription = ({ id, description }) => ({
+  type: constants.CHANGE_NOTE_DESCRIPTION,
+  id,
+  description
+});
 
-const addNote = () => dispatch({
-    type: constants.ADD_NOTE
-  });
+const addNote = () => ({
+  type: constants.ADD_NOTE
+});
 
-const deleteNote = ({ id }) => dispatch({
-    type: constants.DELETE_NOTE,
-    id
-  });
+const deleteNote = ({ id }) => ({
+  type: constants.DELETE_NOTE,
+  id
+});
+
+const { createDispatchFuncWithChannelSharing } = actionUtils;
 
 export default {
-  changeNoteTitle,
-  changeNoteDescription,
-  addNote,
-  deleteNote
+  changeNoteTitle: createDispatchFuncWithChannelSharing(changeNoteTitle),
+  addNote: createDispatchFuncWithChannelSharing(addNote),
+  deleteNote: createDispatchFuncWithChannelSharing(deleteNote),
+  changeNoteDescription: createDispatchFuncWithChannelSharing(
+    changeNoteDescription
+  )
 };

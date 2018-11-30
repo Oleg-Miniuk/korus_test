@@ -1,9 +1,14 @@
 import { dispatch } from '../store/store';
 import constants from '../constants/constants';
+import actionUtils from '../utils/actionsUtils';
 
-const changeFilter = e => dispatch({
+const changeFilter = value => dispatch({
     type: constants.CHANGE_FILTER,
-    filter: e.target.value
+    filter: value
   });
 
-export default { changeFilter };
+const { createDispatchFuncWithChannelSharing } = actionUtils;
+
+export default {
+  changeFilter: createDispatchFuncWithChannelSharing(changeFilter)
+};

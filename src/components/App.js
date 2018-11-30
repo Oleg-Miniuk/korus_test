@@ -24,13 +24,17 @@ class App extends Component {
   componentDidMount() {
     channel.onmessage = e => {
       const message = e.data;
-      const { receivedAppInstanceId, action } = message;
-      // if it is not an app instance that posted message
+      const { appInstanceId: receivedAppInstanceId, action } = message;
+      // do not dispatch if it is an app instance that posted message
       if (receivedAppInstanceId !== appInstanceId) {
         this.props.dispatch(action);
       }
     };
   }
+
+  changeFilterHandler = e => {
+    filterActions.changeFilter(e.target.value);
+  };
 
   render() {
     const { filter, notes, classes } = this.props;
@@ -50,7 +54,7 @@ class App extends Component {
               margin="normal"
               value={filter}
               fullWidth
-              onChange={filterActions.changeFilter}
+              onChange={this.changeFilterHandler}
             />
           </Toolbar>
         </AppBar>
