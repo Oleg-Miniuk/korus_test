@@ -23,7 +23,7 @@
 - Обновление во всех вкладках в браузере (Chrome 54+, Firefox 38+). Тут я использовал BroadcastChannel.
   Возможно через SharedWorker или LocalStorage(нежелательно).
 
-## Использовал
+## Использовано
 
 - React/Redux
 - CRA для сборки
@@ -35,6 +35,6 @@
 2. npm install
 3. npm run start
 
-Мои контакты:
+## Мои контакты
 <br />Скайп: live:oleg.miniuk@gmail.com
 <br />Телеграм: +7 911 149 21 85, @donny_hetzer
